@@ -1,20 +1,34 @@
 import { fromJS } from "immutable"
-
+import * as constants from "./constants"
 const defaultState = fromJS({
-    topicList:[{
-        id:1,
-        title:'社会热点',
-        imgUrl:''
-    },{
-        id:2,
-        title:'手绘',
-        imgUrl:''
-    }]
+    topicList:[],
+    articleList:[],
+    recommendList:[],
+    articlePage: 1,
+    showScroll: false
 });
-console.log("reducer.js中的state",  defaultState );
+const changHomeData = (state,action) =>{
+    return  state.merge({
+        topicList: fromJS(action.topicList),
+        articleList: fromJS(action.articleList),
+        recommendList: fromJS(action.recommendList),
+    })
+}
+const addArticleList = (state,action) =>{
+    return state.merge({
+        articleList: state.get('articleList').concat(action.list),
+        articlePage:action.nextPage
+    })
+}
 const reducer = (state = defaultState,action) => {
     
     switch(action.type){
+        case constants.CHANGE_HOME_DATA:
+          return changHomeData(state,action);
+        case  constants.ADD_ARTICLE_LIST:
+            return addArticleList(state,action);
+        case constants.TOGGLE_SCROLL_TOP:
+            return state.set("showScroll",action.show);
         default:
             return state;
     }

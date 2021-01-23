@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from "react-redux";
 import { TopicWrapper,
          TopicItem
 } from "../style"
 
-class Topic extends Component {
+class Topic extends PureComponent {
     render() {
         let { list } = this.props
         return (
@@ -13,7 +13,7 @@ class Topic extends Component {
                        list.map(item => {
                         return (
                             <TopicItem key={item.get('id')}>
-                            <img className="topic-pic" src={item.get('imgUrl')}/>
+                            <img className="topic-pic" alt="" src={item.get('imgUrl')}/>
                             {item.get("title")}
                             </TopicItem>
                         )
@@ -24,9 +24,8 @@ class Topic extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log("topic中接收的state",state);
     return {
-        list: state.get("home").get("topicList"),
+        list: state.getIn(['home',"topicList"])
     }
 }
 export default connect(mapStateToProps)(Topic)

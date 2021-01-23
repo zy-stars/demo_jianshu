@@ -6,7 +6,9 @@ import Header from "./common/header"
 import { Globalstyle1 } from './statics/iconfont/iconfont.js'
 import store from "./store";
 import Home from "./pages/home"
-import Detial from "./pages/detail"
+import Detail from "./pages/detail/loabable.js"
+import Login from "./pages/login"
+import Write from "./pages/write"
 
 export default class App extends Component {
     render() {
@@ -15,15 +17,15 @@ export default class App extends Component {
                 <Globalstyle/>
                 <Globalstyle1/>
                 <Provider store={store}>
-                   <div>
-                   <Header/>
                     <BrowserRouter>
-                        <div>
+                    <div>
+                        <Header/>
                          <Route path="/" exact component={Home}/>
-                         <Route path="/detial" exact component={Detial}/>
-                        </div>
+                         <Route path="/detail/:id" exact component={Detail}/>
+                         <Route path='/login' component={Login}/>
+                         <Route path='/write' component={Write}/>
+                    </div>      
                     </BrowserRouter>
-                   </div>
                 </Provider>
             </div>
         )

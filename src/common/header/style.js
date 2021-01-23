@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.div`
 export const SearchWrapper = styled.div`
     float:left;
     position:relative;
-    .iconfont {
+    .zoom{
         position: absolute;
         right: 5px;
         bottom: 5px;
@@ -24,9 +24,7 @@ export const SearchWrapper = styled.div`
         }
     }
 `;
-export const Logo = styled.a.attrs({
-    href : '/'
-})`
+export const Logo = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -93,6 +91,49 @@ export const NavSearch = styled.input.attrs({
         width: 160px;
     }
 ` ;
+export const SearchInfo = styled.div`
+    position: absolute;
+    left: 0;
+    top: 56px;
+    width: 240px;
+    padding: 0 20px;
+    box-shadow: 0 0 8px rgba(0 ,0, 0, .2);
+    background: #fff;
+`;
+export const SearchInfoTitle = styled.div`
+    margin:20px 0 15px;
+    line-height: 20px;
+    font-size: 14px;
+    color:#969696;
+`;
+export const SearchInfoSwitch = styled.div`
+    float: right;
+    font-size: 14px;
+    .spin{
+        display:block;
+        float:left;
+        font-size:12px;
+        margin-right:2px;
+        transition:all .2s ease-in;
+        transform-origin:center center;
+    }
+    cursor:pointer;
+`;
+export const SearchInfoItem = styled.a`
+    float: left;
+    display: bloack;
+    float: left;
+    font-size: 12px;
+    margin: 0 10px 10px 0;
+    padding: 0 5px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    color: #787878;
+    border-radius: 3px;
+`;
+export const SearchInfoList = styled.div`
+    overflow: hidden;
+`
 export const Addition = styled.div`
     position: absolute;
     right: 0;
